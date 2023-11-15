@@ -11,7 +11,6 @@ import (
 
 // Ctx defines application custom context
 type Ctx struct {
-	Conf            confOpts
 	CounterInterval time.Duration
 	Log             *logrus.Logger
 }
@@ -37,9 +36,6 @@ func AppCtxInit() (any, error) {
 		tmpLogError("ctx init: %s", err.Error())
 		return nil, err
 	}
-
-	// Set application context
-	c.Conf = conf
 
 	if args.CounterInterval != nil {
 		c.CounterInterval, err = time.ParseDuration((*args.CounterInterval))
